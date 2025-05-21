@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors';
 import connectDB from './Database/dbConfig.js';
+import authRouter from './Routers/user.routers.js'
 
 //config dotenv file to access it
 dotenv.config();
@@ -16,8 +17,10 @@ connectDB();
 app.get("/",(req,res)=>{
     res.status(200).json({message:"Welcome to Backend"})
 });
+//customize routes
+app.use("/api/auth",authRouter)
 //initialize port
-const port = process.env.PORT;
+const port = process.env.PORT || 4000;
 //initialize server
 app.listen(port,(req,res)=>{
     console.log("Server started");
