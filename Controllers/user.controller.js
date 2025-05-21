@@ -52,7 +52,6 @@ export const userLogin = async (req, res) => {
 
 export const getUser = async (req, res) => {
   try {
-
     const _id = req.user._id;
     const user = await users.findOne({ _id });
     res.status(200).json({ message: `welcome ${user.username}`, data: user });
